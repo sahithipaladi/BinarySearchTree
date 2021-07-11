@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace BinaryTreeImplementation
 {
@@ -25,6 +25,12 @@ namespace BinaryTreeImplementation
             binaryTree.Display();
             //Get the size of the tree.......
             binaryTree.GetSize();
+            //Search an element
+            bool result = binaryTree.Search(63, binaryTree);
+            if(result)
+                Console.WriteLine("The element 63 is found in Binary Search Tree");
+            else
+                Console.WriteLine("The element 63 is not found in Binary Search Tree");
         }
     }
 }
