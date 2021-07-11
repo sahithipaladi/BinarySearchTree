@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,12 +18,13 @@ namespace BinaryTreeImplementation
         }
 
         int leftCount = 0, rightCount = 0;
+        bool result = false;
 
         //Insert elements
         public void Insert(T item)
         {
             T currentNodeValue = this.NodeData;
-            if ((currentNodeValue.CompareTo(item)) > 0)
+            if((currentNodeValue.CompareTo(item))>0)
             {
                 if (this.LeftTree == null)
                     this.LeftTree = new BinaryTree<T>(item);
@@ -44,7 +45,7 @@ namespace BinaryTreeImplementation
         //Dispaly elements
         public void Display()
         {
-            if (this.LeftTree != null)
+            if(this.LeftTree!=null)
             {
                 this.LeftTree.Display();
             }
@@ -58,7 +59,27 @@ namespace BinaryTreeImplementation
         //Get size of the tree
         public void GetSize()
         {
-            Console.WriteLine("The size of Binary Search Tree is : " + (this.leftCount + this.rightCount + 1));
+            Console.WriteLine("The size of Binary Search Tree is : "+(this.leftCount+this.rightCount+1));
+        }
+
+        //Search for an element
+        public bool Search(T element,BinaryTree<T> node)
+        {
+            if (node == null)
+                return false;
+            if(node.NodeData.Equals(element))
+            {
+                result = true;
+            }
+            else if(element.CompareTo(node.NodeData) < 0)
+            {
+                Search(element, node.LeftTree);
+            }
+            else if (element.CompareTo(node.NodeData) > 0)
+            {
+                Search(element, node.RightTree);
+            }
+            return result;
         }
     }
 }
