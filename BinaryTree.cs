@@ -18,7 +18,6 @@ namespace BinaryTreeImplementation
         }
 
         int leftCount = 0, rightCount = 0;
-        bool result = false;
 
         //Insert elements
         public void Insert(T item)
@@ -30,6 +29,7 @@ namespace BinaryTreeImplementation
                     this.LeftTree = new BinaryTree<T>(item);
                 else
                     this.LeftTree.Insert(item);
+                this.leftCount++;
             }
             else
             {
@@ -37,6 +37,7 @@ namespace BinaryTreeImplementation
                     this.RightTree = new BinaryTree<T>(item);
                 else
                     this.RightTree.Insert(item);
+                this.rightCount++;
             }
         }
 
@@ -45,15 +46,19 @@ namespace BinaryTreeImplementation
         {
             if (this.LeftTree != null)
             {
-                this.leftCount++;
                 this.LeftTree.Display();
             }
             Console.WriteLine(this.NodeData.ToString());
             if (this.RightTree != null)
             {
-                this.rightCount++;
                 this.RightTree.Display();
             }
+        }
+
+        //Get size of the tree
+        public void GetSize()
+        {
+            Console.WriteLine("The size of Binary Search Tree is : " + (this.leftCount + this.rightCount + 1));
         }
     }
 }
